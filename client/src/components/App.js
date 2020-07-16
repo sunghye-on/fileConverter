@@ -21,6 +21,7 @@ function App() {
           <Route exact path="/" component={Auth(LandingPage, null)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
+          <Route exact path="/result" component={Auth(RegisterPage, null)} />
         </Switch>
       </div>
       <Footer />

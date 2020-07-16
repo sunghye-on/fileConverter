@@ -2,8 +2,9 @@ import React from "react";
 import { Form, Icon } from "antd";
 import Dropzone from "react-dropzone";
 import axios from "axios";
+import { withRouter } from "react-router-dom";
 
-function FileForm() {
+function FileForm(props) {
   const dropHandler = (file) => {
     let fileData = new FormData();
     const config = {
@@ -13,6 +14,7 @@ function FileForm() {
     axios.post(`/api/file/upload`, fileData, config).then((response) => {
       if (response.data.success) {
         console.log(response.data);
+        props.history.push("/result");
       } else {
         alert("파일 업로드 실패");
       }
@@ -54,4 +56,4 @@ function FileForm() {
   );
 }
 
-export default FileForm;
+export default withRouter(FileForm);

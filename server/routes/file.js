@@ -22,8 +22,10 @@ router.post("/upload", (req, res) => {
   upload(req, res, (err) => {
     if (err) {
       return res.json({ success: false, err });
+    } else {
+      //일단 파일 정보를 보내기만 하지만 차후 계산된 값을 넣어 보낼예정
+      return res.json({ success: true, data: res.req.file });
     }
-    return res.json({ success: true, data: res.req.file });
   });
 });
 
