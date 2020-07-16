@@ -25,7 +25,8 @@ function App() {
   const [IsRequired, setIsRequired] = useState(false);
   return (
     <>
-      {isRequest ? (
+      {IsRequired ? (
+        //정현정
         <Result />
       ) : (
         <Suspense fallback={<div>Loading...</div>}>
