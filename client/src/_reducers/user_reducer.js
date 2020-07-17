@@ -16,6 +16,8 @@ export default function (state = {}, action) {
       return { ...state, userData: action.payload };
     case LOGOUT_USER:
       return { ...state };
+    case REQUSET_FILE:
+      return { ...state, isRequired: action.payload };
     default:
       return state;
   }

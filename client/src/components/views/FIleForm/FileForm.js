@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Form, Icon } from "antd";
 import Dropzone from "react-dropzone";
 import axios from "axios";
+import { getRequire } from "../../../_actions/user_actions";
 import { withRouter } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 function FileForm(props) {
+  const dispatch = useDispatch();
   const dropHandler = (file) => {
     let fileData = new FormData();
     const config = {
@@ -15,7 +18,9 @@ function FileForm(props) {
       console.log(response.data);
       if (response.data.success) {
         console.log(response.data);
-        props.history.push("/result");
+        //파일압로드에 성공하면 요청상태를 변경 해주기 위함
+        dispatch(getRequire());
+        props.history.push("/");
       } else {
         alert("파일 확장자를 확인 해주세요");
       }

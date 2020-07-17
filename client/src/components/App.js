@@ -11,6 +11,10 @@ import Footer from "./views/Footer/Footer";
 
 function App() {
   // 상태를 변경한다.
+  // 개발편하라고 만든거
+  const isRequest = false;
+  // 요청을 받으면 다 안보인다.
+
   const updateRequire = (bool) => {
     if (bool) {
       setIsRequired(true);
@@ -19,9 +23,6 @@ function App() {
     }
     console.log("상태를 변경");
   };
-  // 개발편하라고 만든거
-  const isRequest = false;
-  // 요청을 받으면 다 안보인다.
   const [IsRequired, setIsRequired] = useState(false);
   return (
     <>
@@ -33,7 +34,12 @@ function App() {
           <NavBar updateRequire={updateRequire} />
           <div style={{ paddingTop: "69px", minHeight: "calc(100vh - 80px)" }}>
             <Switch>
-              <Route exact path="/" component={Auth(LandingPage, null)} />
+              <Route
+                exact
+                path="/"
+                component={Auth(LandingPage, null)}
+                updateRequire={updateRequire}
+              />
               <Route exact path="/login" component={Auth(LoginPage, false)} />
               <Route
                 exact

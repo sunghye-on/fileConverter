@@ -2,7 +2,7 @@ import React from "react";
 import FileForm from "../FIleForm/FileForm";
 import { Alert } from "antd";
 
-function LandingPage() {
+function LandingPage(props) {
   return (
     <div style={{ width: "75%", margin: "3rem auto" }}>
       <FileForm />

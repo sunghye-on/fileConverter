@@ -7,16 +7,15 @@ import { useSelector } from "react-redux";
 
 function NavBar(props) {
   const [visible, setVisible] = useState(false);
-  // 지금은 요청이 로그인상탸로 확인 하지만
-  // request를 받는 방향으로 받으면 상태정보를 수정해서 사용하자
-  //요청받으면 true로 바꾸자
-  const user = useSelector((state) => state.user.userData);
+
+  const user = useSelector((state) => state.user);
 
   useEffect(() => {}, []);
+  // 요청상태를 확인 하고 변결해줄것
   useEffect(() => {
     if (user) {
-      if (user.isAuth) {
-        // 요청받으면 해당 함수를 호출
+      if (user.isRequired) {
+        // 요청받으면 해당 함수를 호출한다.
         props.updateRequire(true);
       }
     }
