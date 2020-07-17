@@ -9,7 +9,7 @@ function LandingPage() {
       <br />
       <Alert
         message="업로드 가능한 파일 목록"
-        description="xlsx, cvs, xlsm, xls,xltx, xml"
+        description="xlsx, cvs, xlsm, xls, xltx, xml"
         type="success"
         showIcon
       />

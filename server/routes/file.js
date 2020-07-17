@@ -6,7 +6,7 @@ var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     // 엑셀마일만 올리는 부분
     if (!file.originalname.match(/\.(xlsx|cvs|xlsm|xls|xltx|xml)$/)) {
-      return;
+      cb(null, (err = "err"));
     }
     cb(null, "files/");
   },

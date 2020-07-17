@@ -12,11 +12,12 @@ function FileForm(props) {
     };
     fileData.append("file", file[0]);
     axios.post(`/api/file/upload`, fileData, config).then((response) => {
+      console.log(response.data);
       if (response.data.success) {
         console.log(response.data);
         props.history.push("/result");
       } else {
-        alert("파일 업로드 실패");
+        alert("파일 확장자를 확인 해주세요");
       }
     });
   };
