@@ -5,7 +5,7 @@ import { Alert } from "antd";
 function LandingPage(props) {
   return (
     <div style={{ width: "75%", margin: "3rem auto" }}>
-      <FileForm />
+      <FileForm user={props.user} />
       <br />
       <Alert
         message="업로드 가능한 파일 목록"

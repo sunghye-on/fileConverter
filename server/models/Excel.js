@@ -3,15 +3,14 @@ const mongoose = require("mongoose");
 const excelSchema = mongoose.Schema(
   {
     fileName: String,
-    // excelData: {
-    //   type: [{}],
-    //   default: undefined,
-    // },
     filePath: String,
-    user: {
+    size: String,
+
+    userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
+    userName: String,
   },
   { timestamps: true }
 );

@@ -4,6 +4,7 @@ import Auth from "../hoc/auth";
 
 import LandingPage from "./views/LandingPage/LandingPage.js";
 import Result from "./views/Result/Result";
+import Processing from "./views/Processing/Processing";
 import LoginPage from "./views/LoginPage/LoginPage.js";
 import RegisterPage from "./views/RegisterPage/RegisterPage.js";
 import NavBar from "./views/NavBar/NavBar";
@@ -12,7 +13,7 @@ import Footer from "./views/Footer/Footer";
 function App() {
   // 상태를 변경한다.
   // 개발편하라고 만든거
-  const isRequest = false;
+  const testdev = true;
   // 요청을 받으면 다 안보인다.
 
   const updateRequire = (bool) => {
@@ -26,9 +27,9 @@ function App() {
   const [IsRequired, setIsRequired] = useState(false);
   return (
     <>
-      {IsRequired ? (
+      {testdev ? (
         //정현정
-        <Result />
+        <Route exact path="/processing" component={Auth(Processing, null)} />
       ) : (
         <Suspense fallback={<div>Loading...</div>}>
           <NavBar updateRequire={updateRequire} />

@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
+const { Excel } = require("../models/Excel");
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -17,8 +18,7 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage }).single("file");
 
-router.post("/upload", (req, res) => {
-  console.log(res.req.file);
+router.post("/upload", async (req, res) => {
   upload(req, res, (err) => {
     if (err) {
       return res.json({ success: false, err });
@@ -27,6 +27,28 @@ router.post("/upload", (req, res) => {
       return res.json({ success: true, data: res.req.file });
     }
   });
+});
+
+router.post("/save", async (req, res) => {
+  if (req.body.userId === undefined) {
+    console.log("비회원");
+    //바로 진행
+  } else {
+    // 저장 후 실행
+    const excelData = new Excel(req.body);
+    // console.log(excelData);
+
+    // 디비쌓이는것을 막기위함
+    // excelData.save((err) => {
+    //   if (err) {
+    //     return res.status(400).json({ success: false, err });
+    //   } else {
+    //     return res.status(200).json({ success: true });
+    //   }
+    // });
+    return res.status(200).json({ success: true });
+  }
+  // console.log("save", req.body);
 });
 
 module.exports = router;

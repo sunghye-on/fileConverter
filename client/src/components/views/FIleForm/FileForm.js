@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Form, Icon } from "antd";
 import Dropzone from "react-dropzone";
 import axios from "axios";
@@ -9,18 +9,42 @@ import { useDispatch } from "react-redux";
 function FileForm(props) {
   const dispatch = useDispatch();
   const dropHandler = (file) => {
+    if (file.length > 1) {
+      alert("파일을 하나만 선택하세요");
+      return;
+    }
     let fileData = new FormData();
     const config = {
       header: { "content-type": "multipart/form-data" },
     };
     fileData.append("file", file[0]);
+
+    //유저 정보 같이 넘겨서 디비에 저장하기 다음주
     axios.post(`/api/file/upload`, fileData, config).then((response) => {
       console.log(response.data);
       if (response.data.success) {
-        console.log(response.data);
+        console.log(response.data.data.originalname);
+        let body = {
+          fileName: response.data.data.originalname,
+          filePath: response.data.data.path,
+          size: `${Math.round(response.data.data.size / 1000)}KB`,
+
+          userId: props.user.userData._id,
+          userName: props.user.userData.name,
+        };
+        console.log(body);
+        // 엑셀파일 우선 저장
         //파일압로드에 성공하면 요청상태를 변경 해주기 위함
         dispatch(getRequire());
-        props.history.push("/");
+        //진행창이가도록 그이후 결과창
+        props.history.push("/processing");
+        axios.post(`/api/file/save`, body).then((response) => {
+          if (response.data.success) {
+            console.log("저장");
+          } else {
+            alert("DB ERROR");
+          }
+        });
       } else {
         alert("파일 확장자를 확인 해주세요");
       }

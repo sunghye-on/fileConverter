@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { data } from "./exampleData";
 
-function result() {
+function result(props) {
+  const id = props.match.params.objectId;
   const renderTable = () =>
     data.map((data, index) => (
       <tr key={index}>
