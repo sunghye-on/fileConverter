@@ -9,6 +9,7 @@ import LoginPage from "./views/LoginPage/LoginPage.js";
 import RegisterPage from "./views/RegisterPage/RegisterPage.js";
 import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer";
+import MyPage from "./views/MyPage/MyPage";
 
 function App() {
   // 상태를 변경한다.
@@ -27,8 +28,7 @@ function App() {
   const [IsRequired, setIsRequired] = useState(false);
   return (
     <>
-      {testdev ? (
-        //정현정
+      {IsRequired ? (
         <Route exact path="/processing" component={Auth(Processing, null)} />
       ) : (
         <Suspense fallback={<div>Loading...</div>}>
@@ -47,6 +47,7 @@ function App() {
                 path="/register"
                 component={Auth(RegisterPage, false)}
               />
+              <Route exact path="/user/mypage" component={Auth(MyPage, true)} />
             </Switch>
           </div>
           <Footer />
