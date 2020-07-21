@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Progress, Spin } from "antd";
+import { Redirect } from "react-router-dom";
 
 function Processing() {
   const [Percent, setPercent] = useState(0);
+  const [State, setState] = useState("first");
   let numberDiff = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   let timeDiff = [
     2000,
@@ -24,6 +26,7 @@ function Processing() {
     console.log(numberDiff[rand], p);
     if (p >= 100) {
       console.log("done");
+      setState("done");
     } else {
       setTimeout(async () => {
         p = setPercent((Percent) => Percent + numberDiff[rand]);
@@ -31,7 +34,9 @@ function Processing() {
       }, timeDiff[rand]);
     }
   }, [Percent]);
-
+  if (State === "done") {
+    return <Redirect to="/result" />;
+  }
   return (
     <div
       style={{

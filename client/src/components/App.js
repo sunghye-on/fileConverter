@@ -53,6 +53,7 @@ function App() {
                 path="/user/mypage/:userId"
                 component={Auth(MyPage, true)}
               />
+              <Route exact path="/result" component={Auth(Result, null)} />
               <Route component={NotFound} />
             </Switch>
           </div>
