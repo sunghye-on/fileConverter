@@ -47,7 +47,11 @@ function App() {
                 path="/register"
                 component={Auth(RegisterPage, false)}
               />
-              <Route exact path="/user/mypage" component={Auth(MyPage, true)} />
+              <Route
+                exact
+                path="/user/mypage/:userId"
+                component={Auth(MyPage, true)}
+              />
             </Switch>
           </div>
           <Footer />

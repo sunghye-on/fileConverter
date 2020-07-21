@@ -18,7 +18,7 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage }).single("file");
 
-router.post("/upload", async (req, res) => {
+router.post("/upload", (req, res) => {
   upload(req, res, (err) => {
     if (err) {
       return res.json({ success: false, err });
@@ -29,14 +29,19 @@ router.post("/upload", async (req, res) => {
   });
 });
 
-router.post("/save", async (req, res) => {
+router.get("/file_by_id", async (req, res) => {
+  let userId = req.query.id;
+  const data = await Excel.find({ userId });
+  return res.json({ success: true, data });
+});
+
+router.post("/save", (req, res) => {
   if (req.body.userId === undefined) {
     console.log("비회원");
     //바로 진행
   } else {
     // 저장 후 실행
     const excelData = new Excel(req.body);
-    // console.log(excelData);
 
     // 디비쌓이는것을 막기위함
     // excelData.save((err) => {
@@ -48,7 +53,6 @@ router.post("/save", async (req, res) => {
     // });
     return res.status(200).json({ success: true });
   }
-  // console.log("save", req.body);
 });
 
 module.exports = router;
