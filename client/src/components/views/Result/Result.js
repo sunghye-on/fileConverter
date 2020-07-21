@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { data } from "./exampleData";
 
-function result(props) {
+function Result(props) {
   const id = props.match.params.objectId;
   const renderTable = () =>
     data.map((data, index) => (
@@ -32,4 +32,4 @@ function result(props) {
   );
 }
 
-export default result;
+export default Result;

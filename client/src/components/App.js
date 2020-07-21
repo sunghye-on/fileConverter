@@ -10,6 +10,7 @@ import RegisterPage from "./views/RegisterPage/RegisterPage.js";
 import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer";
 import MyPage from "./views/MyPage/MyPage";
+import NotFound from "./views/Utill/NotFound";
 
 function App() {
   // 상태를 변경한다.
@@ -52,6 +53,7 @@ function App() {
                 path="/user/mypage/:userId"
                 component={Auth(MyPage, true)}
               />
+              <Route component={NotFound} />
             </Switch>
           </div>
           <Footer />
