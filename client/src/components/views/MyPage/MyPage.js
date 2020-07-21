@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Descriptions, Spin, Skeleton, List } from "antd";
+import { Descriptions, Spin, Skeleton, List, BackTop } from "antd";
 
 function MyPage(props) {
   const userId = props.match.params.userId;
@@ -20,6 +20,16 @@ function MyPage(props) {
       });
   }, []);
   console.log(FileData);
+  const style = {
+    height: 40,
+    width: 65,
+    lineHeight: "40px",
+    borderRadius: 4,
+    backgroundColor: "#1088e9",
+    color: "#fff",
+    textAlign: "center",
+    fontSize: 14,
+  };
   const hj = "정현정";
   const renderList = () =>
     FileData.data.map((file) => (
@@ -67,6 +77,9 @@ function MyPage(props) {
           <br />
           <br />
           <List itemLayout="horizontal">{renderList()}</List>
+          <BackTop>
+            <div style={style}>위로가기</div>
+          </BackTop>
         </div>
       ) : (
         <div
