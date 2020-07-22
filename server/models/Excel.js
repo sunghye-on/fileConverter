@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 
 const excelSchema = mongoose.Schema(
   {
+    originalName: String,
     fileName: String,
-    filePath: String,
     size: String,
 
     userId: {

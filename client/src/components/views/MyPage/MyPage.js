@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Descriptions, Spin, Skeleton, List, BackTop } from "antd";
+import { Descriptions, Spin, Skeleton, List, BackTop, Button } from "antd";
+import { Link } from "react-router-dom";
 
 function MyPage(props) {
   const userId = props.match.params.userId;
@@ -31,10 +32,22 @@ function MyPage(props) {
     fontSize: 14,
   };
   const hj = "정현정";
+
   const renderList = () =>
     FileData.data.map((file) => (
       <div key={file._id}>
-        <List.Item actions={[<a>원본파일저장</a>, <a>변환파일저장</a>]}>
+        <List.Item
+          actions={[
+            <Link
+              to={`/files/${file.fileName}`}
+              target="_blank"
+              download={file.originalName}
+            >
+              원본파일저장
+            </Link>,
+            <a>변환파일저장</a>,
+          ]}
+        >
           <List.Item.Meta
             title={hj}
             description={`크기: ${hj} / 변환날짜: ${hj}`}

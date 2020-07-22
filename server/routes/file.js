@@ -9,10 +9,10 @@ var storage = multer.diskStorage({
     if (!file.originalname.match(/\.(xlsx|cvs|xlsm|xls|xltx|xml)$/)) {
       cb(null, (err = "err"));
     }
-    cb(null, "files/");
+    cb(null, "client/public/files/");
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname + "-" + Date.now());
+    cb(null, Date.now() + "_" + file.originalname);
   },
 });
 
@@ -43,15 +43,15 @@ router.post("/save", (req, res) => {
     // 저장 후 실행
     const excelData = new Excel(req.body);
 
-    // 디비쌓이는것을 막기위함
-    // excelData.save((err) => {
-    //   if (err) {
-    //     return res.status(400).json({ success: false, err });
-    //   } else {
-    //     return res.status(200).json({ success: true });
-    //   }
-    // });
-    return res.status(200).json({ success: true });
+    // 디비쌓이는것을 막기위한 주석처리
+    excelData.save((err) => {
+      if (err) {
+        return res.status(400).json({ success: false, err });
+      } else {
+        return res.status(200).json({ success: true });
+      }
+    });
+    // return res.status(200).json({ success: true });
   }
 });
 

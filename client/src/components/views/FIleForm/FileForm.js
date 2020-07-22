@@ -25,10 +25,9 @@ function FileForm(props) {
       if (response.data.success) {
         console.log(response.data.data.originalname);
         let body = {
-          fileName: response.data.data.originalname,
-          filePath: response.data.data.path,
+          originalName: response.data.data.originalname,
+          fileName: response.data.data.filename,
           size: `${Math.round(response.data.data.size / 1000)}KB`,
-
           userId: props.user.userData._id,
           userName: props.user.userData.name,
         };
