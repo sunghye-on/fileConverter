@@ -4,6 +4,7 @@ import {
   AUTH_USER,
   LOGOUT_USER,
   REQUSET_FILE,
+  REQUSET_DONE,
 } from "../_actions/types";
 
 export default function (state = {}, action) {
@@ -17,6 +18,8 @@ export default function (state = {}, action) {
     case LOGOUT_USER:
       return { ...state };
     case REQUSET_FILE:
+      return { ...state, isRequired: action.payload };
+    case REQUSET_DONE:
       return { ...state, isRequired: action.payload };
     default:
       return state;

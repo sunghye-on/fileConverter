@@ -5,6 +5,7 @@ import {
   AUTH_USER,
   LOGOUT_USER,
   REQUSET_FILE,
+  REQUSET_DONE,
 } from "./types";
 import { USER_SERVER } from "../components/Config.js";
 
@@ -12,6 +13,12 @@ export function getRequire() {
   return {
     type: REQUSET_FILE,
     payload: true,
+  };
+}
+export function doneRequire() {
+  return {
+    type: REQUSET_DONE,
+    payload: false,
   };
 }
 export function registerUser(dataToSubmit) {
