@@ -4,7 +4,7 @@
 dev.js
 
 files/
-
+covtFiles/
 .DS_Store
 
 npm-debug.log*

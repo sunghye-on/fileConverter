@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Progress, Spin, Modal, Button, Result } from "antd";
-import { Redirect } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 function Processing(props) {

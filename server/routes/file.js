@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const multer = require("multer");
 const { Excel } = require("../models/Excel");
+const { fileConverter } = require("../middleware/convert");
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -24,7 +25,10 @@ router.post("/upload", (req, res) => {
       return res.json({ success: false, err });
     } else {
       //일단 파일 정보를 보내기만 하지만 차후 계산된 값을 넣어 보낼예정
-      return res.json({ success: true, data: res.req.file });
+      // 일단 python의 print만 찌가어보자
+      let data = res.req.file;
+      fileConverter(data);
+      return res.json({ success: true, data });
     }
   });
 });
@@ -44,14 +48,14 @@ router.post("/save", (req, res) => {
     const excelData = new Excel(req.body);
 
     // 디비쌓이는것을 막기위한 주석처리
-    excelData.save((err) => {
-      if (err) {
-        return res.status(400).json({ success: false, err });
-      } else {
-        return res.status(200).json({ success: true });
-      }
-    });
-    // return res.status(200).json({ success: true });
+    // excelData.save((err) => {
+    //   if (err) {
+    //     return res.status(400).json({ success: false, err });
+    //   } else {
+    //     return res.status(200).json({ success: true });
+    //   }
+    // });
+    return res.status(200).json({ success: true });
   }
 });
 

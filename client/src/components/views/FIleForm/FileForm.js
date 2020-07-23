@@ -18,7 +18,8 @@ function FileForm(props) {
       header: { "content-type": "multipart/form-data" },
     };
     fileData.append("file", file[0]);
-
+    //진행창이가도록 그이후 결과창
+    props.history.push("/processing");
     //유저 정보 같이 넘겨서 디비에 저장하기 다음주
     axios.post(`/api/file/upload`, fileData, config).then((response) => {
       console.log(response.data);
@@ -35,8 +36,7 @@ function FileForm(props) {
         // 엑셀파일 우선 저장
         //파일압로드에 성공하면 요청상태를 변경 해주기 위함
         dispatch(getRequire());
-        //진행창이가도록 그이후 결과창
-        props.history.push("/processing");
+
         axios.post(`/api/file/save`, body).then((response) => {
           if (response.data.success) {
             console.log("저장");
