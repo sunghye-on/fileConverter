@@ -80,10 +80,10 @@ function MyPage(props) {
             }}
           />
           <br />
-          <Descriptions title="User Info" bordered style={{ width: "650px" }}>
-            <Descriptions.Item label="Name">{hj}</Descriptions.Item>
+          <Descriptions title="내정보" bordered style={{ width: "650px" }}>
+            <Descriptions.Item label="이름">{hj}</Descriptions.Item>
 
-            <Descriptions.Item label="e-mail" span={2}>
+            <Descriptions.Item label="Email" span={2}>
               {hj}
             </Descriptions.Item>
           </Descriptions>
