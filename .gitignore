@@ -1,6 +1,6 @@
 /node_modules
 /build
-
+__pycache__/
 dev.js
 
 files/

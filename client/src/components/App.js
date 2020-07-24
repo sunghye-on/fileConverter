@@ -30,7 +30,8 @@ function App() {
   return (
     <>
       {IsRequired ? (
-        <Route exact path="/processing" component={Auth(Processing, null)} />
+        // <Route exact path="/processing" component={Auth(Processing, null)} />
+        <Processing />
       ) : (
         <Suspense fallback={<div>Loading...</div>}>
           <NavBar updateRequire={updateRequire} />
