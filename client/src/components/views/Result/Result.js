@@ -2,7 +2,15 @@ import React, { useEffect } from "react";
 
 function Result(props) {
   useEffect(() => {}, []);
-  return <div>정현정이 만들 곳</div>;
+  console.log(props.location.state);
+  return (
+    <div>
+      <iframe
+        src={`/covtFiles/${props.location.state}`}
+        style={{ display: "none" }}
+      ></iframe>
+    </div>
+  );
 }
 
 export default Result;

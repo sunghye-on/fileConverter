@@ -37,7 +37,7 @@ function FileForm(props) {
         console.log(body);
         console.log(response.data.convertData);
         // props.history.push("/processing");
-        props.history.push("/result");
+        props.history.push("/result", docxName);
         // 엑셀파일 우선 저장
         //파일압로드에 성공하면 요청상태를 변경 해주기 위함
         dispatch(getRequire());
