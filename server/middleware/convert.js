@@ -10,7 +10,6 @@ let fileConverter = async (data) => {
     pythonOptions: ["-u"],
     encoding: "utf8",
     args: [data.originalname, data.filename],
-    encoding: "utf8",
   };
 
   PythonShell.run("test.py", options, function (err, data) {

@@ -45,7 +45,16 @@ function MyPage(props) {
             >
               원본파일저장
             </Link>,
-            <a>변환파일저장</a>,
+            <Link
+              to={`/covtFiles/${file.convertFileName}`}
+              target="_blank"
+              download={file.originalName.replace(
+                /.(xlsx|cvs|xlsm|xls|xltx|xml)$/,
+                ".docx"
+              )}
+            >
+              변환파일저장
+            </Link>,
           ]}
         >
           <List.Item.Meta

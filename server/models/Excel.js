@@ -4,6 +4,7 @@ const excelSchema = mongoose.Schema(
   {
     originalName: String,
     fileName: String,
+    convertFileName: String,
     size: String,
 
     userId: {

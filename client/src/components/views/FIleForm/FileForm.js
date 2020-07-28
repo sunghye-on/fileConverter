@@ -24,9 +24,12 @@ function FileForm(props) {
       console.log(response.data);
       if (response.data.success) {
         console.log(response.data.data.originalname);
+        let temp = response.data.data.filename;
+        let docxName = temp.replace(/.(xlsx|cvs|xlsm|xls|xltx|xml)$/, ".docx");
         let body = {
           originalName: response.data.data.originalname,
           fileName: response.data.data.filename,
+          convertFileName: docxName,
           size: `${Math.round(response.data.data.size / 1000)}KB`,
           userId: props.user.userData._id,
           userName: props.user.userData.name,

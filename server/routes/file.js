@@ -20,7 +20,7 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage }).single("file");
 
 router.post("/upload", (req, res) => {
-  upload(req, res, (err) => {
+  upload(req, res, async (err) => {
     if (err) {
       return res.json({ success: false, err });
     } else {
@@ -28,7 +28,8 @@ router.post("/upload", (req, res) => {
       // 일단 python의 print만 찌가어보자
       let data = res.req.file;
       let convertData = fileConverter(data);
-      return res.json({ success: true, data });
+      console.log("변환데이터", data);
+      return res.json({ success: true, data, convertData });
     }
   });
 });
@@ -48,14 +49,14 @@ router.post("/save", (req, res) => {
     const excelData = new Excel(req.body);
 
     // 디비쌓이는것을 막기위한 주석처리
-    // excelData.save((err) => {
-    //   if (err) {
-    //     return res.status(400).json({ success: false, err });
-    //   } else {
-    //     return res.status(200).json({ success: true });
-    //   }
-    // });
-    return res.status(200).json({ success: true });
+    excelData.save((err) => {
+      if (err) {
+        return res.status(400).json({ success: false, err });
+      } else {
+        return res.status(200).json({ success: true });
+      }
+    });
+    // return res.status(200).json({ success: true });
   }
 });
 
