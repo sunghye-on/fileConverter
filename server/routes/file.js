@@ -7,7 +7,7 @@ const { fileConverter } = require("../middleware/convert");
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     // 엑셀마일만 올리는 부분
-    if (!file.originalname.match(/\.(xlsx|cvs|xlsm|xls|xltx|xml)$/)) {
+    if (!file.originalname.match(/\.(xlsx|csv|xlsm|xls|xltx|xml)$/)) {
       cb(null, (err = "err"));
     }
     cb(null, "client/public/files/");
