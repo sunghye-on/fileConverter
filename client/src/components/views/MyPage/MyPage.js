@@ -58,8 +58,10 @@ function MyPage(props) {
           ]}
         >
           <List.Item.Meta
-            title={hj}
-            description={`크기: ${hj} / 변환날짜: ${hj}`}
+            title={file.originalName}
+            description={`크기: ${
+              file.size
+            } / 변환날짜: ${file.createdAt.substr(0, 10)}`}
           />
         </List.Item>
       </div>
@@ -90,10 +92,12 @@ function MyPage(props) {
           />
           <br />
           <Descriptions title="내정보" bordered style={{ width: "650px" }}>
-            <Descriptions.Item label="이름">{hj}</Descriptions.Item>
+            <Descriptions.Item label="이름">
+              {props.user.userData.name}
+            </Descriptions.Item>
 
             <Descriptions.Item label="Email" span={2}>
-              {hj}
+              {props.user.userData.email}
             </Descriptions.Item>
           </Descriptions>
           <br />

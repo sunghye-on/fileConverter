@@ -49,14 +49,14 @@ router.post("/save", (req, res) => {
     const excelData = new Excel(req.body);
 
     // 디비쌓이는것을 막기위한 주석처리
-    excelData.save((err) => {
-      if (err) {
-        return res.status(400).json({ success: false, err });
-      } else {
-        return res.status(200).json({ success: true });
-      }
-    });
-    // return res.status(200).json({ success: true });
+    // excelData.save((err) => {
+    //   if (err) {
+    //     return res.status(400).json({ success: false, err });
+    //   } else {
+    //     return res.status(200).json({ success: true });
+    //   }
+    // });
+    return res.status(200).json({ success: true });
   }
 });
 

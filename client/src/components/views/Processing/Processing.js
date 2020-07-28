@@ -52,15 +52,15 @@ function Processing(props) {
       <div style={{ textAlign: "center" }}>
         <Spin size="large" tip="변환중..." />
       </div>
-      <Progress
+      {/* <Progress
         strokeColor={{
           "0%": "#108ee9",
           "100%": "#87d068",
         }}
         percent={Percent}
         status="active"
-      />
-      <Modal visible={Visible} footer={null} closable={false}>
+      /> */}
+      {/* <Modal visible={Visible} footer={null} closable={false}>
         <Result
           style={{ padding: "10px 0" }}
           status="success"
@@ -72,7 +72,7 @@ function Processing(props) {
             </a>
           }
         />
-      </Modal>
+      </Modal> */}
     </div>
   );
 }
