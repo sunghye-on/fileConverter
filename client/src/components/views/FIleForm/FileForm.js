@@ -25,7 +25,7 @@ function FileForm(props) {
       if (response.data.success) {
         console.log(response.data.data.originalname);
         let temp = response.data.data.filename;
-        let docxName = temp.replace(/.(xlsx|cvs|xlsm|xls|xltx|xml)$/, ".docx");
+        let docxName = temp.replace("csv", ".docx");
         let body = {
           originalName: response.data.data.originalname,
           fileName: response.data.data.filename,

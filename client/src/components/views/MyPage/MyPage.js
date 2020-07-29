@@ -48,10 +48,7 @@ function MyPage(props) {
             <Link
               to={`/covtFiles/${file.convertFileName}`}
               target="_blank"
-              download={file.originalName.replace(
-                /.(xlsx|cvs|xlsm|xls|xltx|xml)$/,
-                ".docx"
-              )}
+              download={file.originalName.replace("csv", ".docx")}
             >
               변환파일저장
             </Link>,

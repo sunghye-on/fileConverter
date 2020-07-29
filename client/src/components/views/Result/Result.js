@@ -1,16 +1,36 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { Result, Button } from "antd";
 
-function Result(props) {
-  useEffect(() => {}, []);
-  console.log(props.location.state);
+function Success(props) {
+  let temp = props.location.state;
+  let fileName = temp.split("_");
   return (
-    <div>
+    <div style={{ marginTop: "100px" }}>
+      {/*
+        자동 다운로드 삭제 
       <iframe
         src={`/covtFiles/${props.location.state}`}
         style={{ display: "none" }}
-      ></iframe>
+      ></iframe> */}
+
+      <Result
+        status="success"
+        title="성공적으로 파일을 .docx로 변환 완료했습니다!"
+        subTitle="다운로드 버튼을 눌러 변환된 파일을 다운로드를 해보세요."
+        extra={[
+          <Button type="primary">
+            <a href={`/covtFiles/${fileName[1]}`} download>
+              다운로드
+            </a>
+          </Button>,
+
+          <Button>
+            <a href="/">돌아가기</a>
+          </Button>,
+        ]}
+      />
     </div>
   );
 }
 
-export default Result;
+export default Success;

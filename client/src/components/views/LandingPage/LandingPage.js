@@ -8,8 +8,8 @@ function LandingPage(props) {
       <FileForm user={props.user} />
       <br />
       <Alert
-        message="업로드 가능한 파일 목록"
-        description="xlsx, cvs, xlsm, xls, xltx, xml"
+        message=".csv 파일만 변환가능합니다!"
+        description="엑셀파일을 다른 이름으로 저장하여 csv파일로 변환해 주세요"
         type="success"
         showIcon
       />
