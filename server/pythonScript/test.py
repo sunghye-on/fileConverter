@@ -1,6 +1,5 @@
 import sys
 import xlrd
-import time
 import csv
 from docx import Document
 from docx.oxml.ns import nsdecls 

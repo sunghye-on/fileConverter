@@ -25,8 +25,6 @@ router.post("/upload", (req, res) => {
     if (err) {
       return res.json({ success: false, err });
     } else {
-      //일단 파일 정보를 보내기만 하지만 차후 계산된 값을 넣어 보낼예정
-      // 일단 python의 print만 찌가어보자
       let data = res.req.file;
       let convertData = fileConverter(data);
       console.log("변환데이터", data);

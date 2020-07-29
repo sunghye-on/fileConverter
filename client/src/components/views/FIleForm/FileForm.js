@@ -18,19 +18,22 @@ function FileForm(props) {
       header: { "content-type": "multipart/form-data" },
     };
     fileData.append("file", file[0]);
-    //진행창이가도록 그이후 결과창
     //유저 정보 같이 넘겨서 디비에 저장하기 다음주
     axios.post(`/api/file/upload`, fileData, config).then((response) => {
       console.log(response.data);
       if (response.data.success) {
+        let size = Math.round(response.data.data.size / 1000);
+        if (size == 0) {
+          size = 1;
+        }
         console.log(response.data.data.originalname);
         let temp = response.data.data.filename;
-        let docxName = temp.replace("csv", ".docx");
+        let docxName = temp.replace(".csv", ".docx");
         let body = {
           originalName: response.data.data.originalname,
           fileName: response.data.data.filename,
           convertFileName: docxName,
-          size: `${Math.round(response.data.data.size / 1000)}KB`,
+          size: `${size}KB`,
           userId: props.user.userData._id,
           userName: props.user.userData.name,
         };
