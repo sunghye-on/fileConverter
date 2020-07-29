@@ -4,6 +4,7 @@ import { Result, Button } from "antd";
 function Success(props) {
   let temp = props.location.state;
   let fileName = temp.split("_");
+  console.log(temp);
   return (
     <div style={{ marginTop: "100px" }}>
       {/*
@@ -19,7 +20,7 @@ function Success(props) {
         subTitle="다운로드 버튼을 눌러 변환된 파일을 다운로드를 해보세요."
         extra={[
           <Button type="primary">
-            <a href={`/covtFiles/${fileName[1]}`} download>
+            <a href={`/covtFiles/${temp}`} download={`${fileName[1]}`}>
               다운로드
             </a>
           </Button>,

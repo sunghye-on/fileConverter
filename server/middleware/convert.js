@@ -12,7 +12,7 @@ let fileConverter = async (data) => {
     args: [data.originalname, data.filename],
   };
 
-  PythonShell.run("test.py", options, function (err, data) {
+  PythonShell.run("convert.py", options, function (err, data) {
     if (err) throw err;
     else {
       console.log("파일 변환결과 ", data);
