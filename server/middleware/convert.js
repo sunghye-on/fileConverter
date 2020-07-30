@@ -1,6 +1,6 @@
 const { PythonShell } = require("python-shell");
 PythonShell.defaultOptions = {
-  scriptPath: "server/pythonScript",
+  scriptPath: "pythonScript",
 };
 
 let fileConverter = async (data) => {

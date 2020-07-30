@@ -11,7 +11,7 @@ var storage = multer.diskStorage({
       cb(null, (err = "err"));
       return;
     }
-    cb(null, "client/public/files/");
+    cb(null, "../client/public/files/");
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + "_" + file.originalname);

@@ -19,7 +19,7 @@ from docx.enum.section import WD_ORIENT
 from docx.oxml.ns import qn, nsdecls
 from collections import Counter
 
-filePath = "client/public/files/"+sys.argv[2]
+filePath = "../client/public/files/"+sys.argv[2]
 f = open(filePath, 'r')
 lines = csv.reader(f)
 #for문에 들어가기전에, 모든 인스턴스들을 관리할 리스트 생성
@@ -1350,6 +1350,6 @@ for row in table.rows:
 #docx파일 생성을 위한 save('파일명')
 fileName = sys.argv[2]
 ffile = fileName.split(".")
-document.save("client/public/covtFiles/"+ffile[0]+".docx")
+document.save("../client/public/covtFiles/"+ffile[0]+".docx")
 
 print('함수종료')
