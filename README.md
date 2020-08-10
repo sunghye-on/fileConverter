@@ -38,3 +38,6 @@
 * 전역상태관리 : **redux**
 * backend에게 request : **axios** 
 
+### 배포
+
+* heroku
